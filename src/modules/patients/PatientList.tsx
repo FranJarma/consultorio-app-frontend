@@ -11,6 +11,7 @@ import {
     ExportButton,
     TextInput,
   } from "react-admin";
+import MyBreadcrumbs from "../../common/components/ui/Breadcrumb";
   
   const ListActions = () => (
     <TopToolbar>
@@ -32,16 +33,19 @@ import {
   ];
   
   export const PatientList = () => (
-    <List actions={<ListActions />} filters={filters}>
-      <DatagridConfigurable rowClick="edit">
-        <TextField source="fullname" label="Nombre del Paciente" />
-        <TextField source="dni" label="DNI" />
-        <TextField source="healthEnsurance" label="Obra Social" />
-        <TextField source="locality" label="Localidad" />
-        <TextField source="profession" label="Profesión" />
-        <TextField source="address" label="Dirección" />
-        <NumberField source="age" label="Edad" />
-      </DatagridConfigurable>
-    </List>
+    <>
+      <MyBreadcrumbs style={{ paddingTop: 48 }}/>
+      <List actions={<ListActions />} filters={filters} storeKey={false}>
+        <DatagridConfigurable rowClick="edit">
+          <TextField source="fullname" label="Nombre del Paciente" />
+          <TextField source="dni" label="DNI" />
+          <TextField source="healthEnsurance" label="Obra Social" />
+          <TextField source="locality" label="Localidad" />
+          <TextField source="profession" label="Profesión" />
+          <TextField source="address" label="Dirección" />
+          <NumberField source="age" label="Edad" />
+        </DatagridConfigurable>
+      </List>
+    </>
   );
   

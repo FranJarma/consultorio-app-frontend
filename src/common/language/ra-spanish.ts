@@ -3,6 +3,12 @@ import spanishMessages from "ra-language-spanish";
 console.log({spanishMessages});
 export const spanish = {
     ...spanishMessages,
+    resources: {
+        patients: {
+            name: 'Pacientes',
+            singularName: 'Paciente',
+        }
+    },
     ra: {
         ...spanishMessages.ra,
         action: {
@@ -20,7 +26,8 @@ export const spanish = {
         },
         navigation: {
             ...spanishMessages.ra?.navigation,
-            page_rows_per_page: "Registros por página"
+            page_rows_per_page: "Registros por página",
+            home: "Inicio"
         }
     }
 };
