@@ -1,3 +1,6 @@
+import { ClinicalStory } from "../../clinical-stories/types/clinical-stories";
+import { Turn } from "../../turns/types/turns";
+
 export type Patient = {
     id: string;
     fullname: string;
@@ -8,4 +11,7 @@ export type Patient = {
     email: string;
     age: number;
     healthEnsurance: string;
+    locality: string;
+    turns: Turn[];
+    clinicalStories: ClinicalStory[]
 }

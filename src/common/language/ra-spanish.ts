@@ -23,11 +23,20 @@ export const spanish = {
             search: "Buscar",
             export: "Exportar",
             select_columns: "Columnas",
+            confirm: "Confirmar"
         },
         navigation: {
             ...spanishMessages.ra?.navigation,
             page_rows_per_page: "Registros por página",
-            home: "Inicio"
+            home: "Inicio",
+            skip_nav: "Abrir / Cerrar menú"
+        }
+    },
+    custom: {
+        states: {
+            pending: "Pendiente",
+            completed: "Completado",
+            cancelled: "Cancelado"
         }
     }
 };

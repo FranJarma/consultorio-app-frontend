@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid2';
 import { Edit, required, SimpleForm, TextInput, AutocompleteInput, NumberInput, EditProps, useRecordContext } from "react-admin";
 import { HEALTH_ENSURANCES } from '../../common/constants/healthEnsurances';
-import { Patient } from './types/patient';
+import { Patient } from './types/patients';
 import MyBreadcrumbs from '../../common/components/ui/Breadcrumb';
 
 const PatientEditTitle = () => {

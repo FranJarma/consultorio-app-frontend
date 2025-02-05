@@ -15,6 +15,7 @@ import { authProvider } from "./authProvider";
 import { spanish } from "./common/language/ra-spanish";
 import { MyLogin } from "./modules/login/Login";
 import { PatientCreate, PatientEdit, PatientList } from "./modules/patients";
+import { PatientShow } from "./modules/patients/PatientShow";
 
 
 const i18nProvider = polyglotI18nProvider(() => spanish, "es");
@@ -53,7 +54,7 @@ export const App = () => (
       create={PatientCreate}
       list={PatientList}
       edit={PatientEdit}
-      show={ShowGuesser}
+      show={PatientShow}
     />
     <Resource
       name="turns"
