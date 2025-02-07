@@ -22,19 +22,25 @@ const TableButtons = ({ children }: TableButtonsProps) => {
 
   return (
     <div>
-      <IconButton onMouseEnter={handleMouseEnter}>
-        <MoreVertIcon />
-      </IconButton>
-      <Menu 
-        anchorEl={anchorEl} 
-        open={open} 
-        onClose={() => setAnchorEl(null)}
-        MenuListProps={{ onMouseLeave: handleMouseLeave }}
-      >
-        {React.Children.map(children, (child, index) => (
-          <MenuItem key={index}>{child}</MenuItem>
-        ))}
+      {
+        React.Children.count(children) === 1 ?
+        <MenuItem key={0}>{React.Children.only(children)}</MenuItem> :
+        <>
+          <IconButton onMouseEnter={handleMouseEnter}>
+            <MoreVertIcon />
+          </IconButton>
+          <Menu 
+            anchorEl={anchorEl} 
+            open={open} 
+            onClose={() => setAnchorEl(null)}
+            MenuListProps={{ onMouseLeave: handleMouseLeave }}
+          >
+          {React.Children.map(children, (child, index) => (
+            <MenuItem key={index}>{child}</MenuItem>
+          ))}
       </Menu>
+      </>
+      }
     </div>
   );
 };

@@ -5,7 +5,6 @@ import { CalendarTodayOutlined } from "@mui/icons-material";
 import { useTableButtonAction } from "../../../../common/hooks/useTableButtonAction";
 import { TurnStateEnum } from "../../types/turns";
 import { Patient } from "../../../patients/types/patients";
-import { getCurrentArgentinaISODate } from "../../../../common/utils";
 
 export const BookTurnButton = () => {
     const record = useRecordContext<Patient>();
@@ -21,8 +20,6 @@ export const BookTurnButton = () => {
         if (!executeAction) return;
 
         const today = new Date();
-        turnDate.setHours(0, 0, 0, 0);
-        today.setHours(0, 0, 0, 0);
     
         if (turnDate < today) {
             notify("No se permiten fechas pasadas", { type: "error" });

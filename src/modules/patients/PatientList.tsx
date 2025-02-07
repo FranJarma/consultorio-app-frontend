@@ -11,13 +11,13 @@ import {
   TextInput,
   EditButton,
   ShowButton,
-  DeleteWithConfirmButton,
   WrapperField,
   Datagrid,
 } from "react-admin";
 import MyBreadcrumbs from "../../common/components/ui/Breadcrumb";
 import TableButtons from "../../common/components/ui/TableButtons";
 import { BookTurnButton } from "../turns/components/create/BookTurnButton";
+import { DeleteConfirmButton } from "../../common/components/ui/DeleteConfirmButton";
 
 const ListActions = () => (
   <TopToolbar>
@@ -39,6 +39,7 @@ const filters = [
 ];
 
 export const PatientList = () => {
+
   return (
       <>
           <MyBreadcrumbs style={{ paddingTop: 48 }} />
@@ -56,7 +57,7 @@ export const PatientList = () => {
                           <EditButton />
                           <ShowButton />
                           <BookTurnButton />
-                          <DeleteWithConfirmButton id="fullname" />
+                          <DeleteConfirmButton model="paciente" titleProp="fullname"/>
                       </TableButtons>
                   </WrapperField>
               </Datagrid>

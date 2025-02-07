@@ -7,7 +7,7 @@ import {
   defaultTheme,
 } from "react-admin";
 import polyglotI18nProvider from "ra-i18n-polyglot";
-import { CalendarMonthOutlined, DescriptionOutlined, PeopleOutlined } from "@mui/icons-material";
+import { CalendarMonthOutlined, DescriptionOutlined, HomeOutlined, PeopleOutlined } from "@mui/icons-material";
 import { deepmerge } from '@mui/utils';
 import { Layout } from "./Layout";
 import { dataProvider } from "./dataProvider";
@@ -16,6 +16,7 @@ import { spanish } from "./common/language/ra-spanish";
 import { MyLogin } from "./modules/login/Login";
 import { PatientCreate, PatientEdit, PatientList } from "./modules/patients";
 import { PatientShow } from "./modules/patients/PatientShow";
+import { TurnList } from "./modules/turns/TurnList";
 
 
 const i18nProvider = polyglotI18nProvider(() => spanish, "es");
@@ -62,7 +63,7 @@ export const App = () => (
       options={{
         label: "Turnos",
       }}
-      list={ListGuesser}
+      list={TurnList}
       edit={EditGuesser}
       show={ShowGuesser}
     />

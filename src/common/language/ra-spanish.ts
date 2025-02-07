@@ -7,6 +7,10 @@ export const spanish = {
         patients: {
             name: 'Pacientes',
             singularName: 'Paciente',
+        },
+        turns: {
+            name: 'Turnos',
+            singularName: 'Turno',
         }
     },
     ra: {
