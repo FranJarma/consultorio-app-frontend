@@ -1,44 +1,36 @@
-import { AuthProvider, HttpError } from "react-admin";
-import data from "./users.json";
+import { AuthProvider, HttpError } from 'react-admin';
 
-/**
- * This authProvider is only for test purposes. Don't use it in production.
- */
 export const authProvider: AuthProvider = {
-  login: ({ username, password }) => {
-    const user = data.users.find(
-      (u) => u.username === username && u.password === password,
-    );
+  login: async ({ username, password }) => {
+    const response = await fetch(`${import.meta.env.VITE_SIMPLE_REST_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    });
 
-    if (user) {
-      // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-      let { password, ...userToPersist } = user;
-      localStorage.setItem("user", JSON.stringify(userToPersist));
-      return Promise.resolve();
+    if (!response.ok) {
+      throw new HttpError('Invalid credentials', 401);
     }
 
-    return Promise.reject(
-      new HttpError("Unauthorized", 401, {
-        message: "Invalid username or password",
-      }),
-    );
+    const { token, user } = await response.json();
+    localStorage.setItem('auth', JSON.stringify({ token, user }));
   },
   logout: () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem('auth');
     return Promise.resolve();
   },
+  checkAuth: () => {
+    return localStorage.getItem('auth') ? Promise.resolve() : Promise.reject();
+  },
+  getPermissions: async () => {
+    const auth = JSON.parse(localStorage.getItem('auth') || '{}');
+    return auth?.user?.role ? Promise.resolve(auth.user.role) : Promise.reject();
+  },
+  getIdentity: async () => {
+    const auth = JSON.parse(localStorage.getItem('auth') || '{}');
+    return auth?.user ? Promise.resolve(auth.user) : Promise.reject();
+  },
   checkError: () => Promise.resolve(),
-  checkAuth: () =>
-    localStorage.getItem("user") ? Promise.resolve() : Promise.reject(),
-  getPermissions: () => {
-    return Promise.resolve(undefined);
-  },
-  getIdentity: () => {
-    const persistedUser = localStorage.getItem("user");
-    const user = persistedUser ? JSON.parse(persistedUser) : null;
-
-    return Promise.resolve(user);
-  },
 };
 
 export default authProvider;

@@ -1,9 +1,12 @@
 import spanishMessages from "ra-language-spanish";
 
-console.log({spanishMessages});
 export const spanish = {
     ...spanishMessages,
     resources: {
+        'clinical-stories': {
+            name: 'Historias Clínicas',
+            singularName: 'Historia Clínica'
+        },
         patients: {
             name: 'Pacientes',
             singularName: 'Paciente',

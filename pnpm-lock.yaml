@@ -26,6 +26,9 @@ importers:
       ra-jsonapi-client:
         specifier: ^0.10.0
         version: 0.10.0
+      ra-language-spanish:
+        specifier: ^1.0.0
+        version: 1.0.0
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -1602,6 +1605,9 @@ packages:
 
   ra-language-english@5.5.3:
     resolution: {integrity: sha512-KLHU0zq/F9Ae636kh/s2YIf2kkVUvIA34OQmQQf6cVxyRcXn70WmZShFXViiut0xhHDyFcsCgAm7YxSHviL0pQ==}
+
+  ra-language-spanish@1.0.0:
+    resolution: {integrity: sha512-hdsW0DtE9foDVMkct3kyLdm8sKgwFFKeqBJ9bxOz3T7qtPAXljxOIgSmvSEjx3bKS0xfUkHX8kt3wvB+Q7fyIg==}
 
   ra-ui-materialui@5.5.3:
     resolution: {integrity: sha512-dWspmn6KIu7hpHyIRsMw0aWp8XweKEnP2zlofJQsZD4IixNwjLwokGT3194txHtfNGnf9rhLNEa4qLXvI1AFcQ==}
@@ -3674,6 +3680,8 @@ snapshots:
       - react-hook-form
       - react-router
       - react-router-dom
+
+  ra-language-spanish@1.0.0: {}
 
   ra-ui-materialui@5.5.3(pnc3gzwv2ate3y2ip2ghacqdx4):
     dependencies:
