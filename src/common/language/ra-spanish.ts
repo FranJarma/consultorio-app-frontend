@@ -1,9 +1,12 @@
 import spanishMessages from "ra-language-spanish";
 
-console.log({spanishMessages});
 export const spanish = {
     ...spanishMessages,
     resources: {
+        'clinical-stories': {
+            name: 'Historias Clínicas',
+            singularName: 'Historia Clínica'
+        },
         patients: {
             name: 'Pacientes',
             singularName: 'Paciente',
@@ -15,6 +18,10 @@ export const spanish = {
     },
     ra: {
         ...spanishMessages.ra,
+        auth: {
+            ...spanishMessages.ra.auth,
+            auth_check_error: "Error de autenticación",
+        },
         action: {
             ...spanishMessages.ra?.action,
             delete: "Eliminar",
@@ -34,6 +41,10 @@ export const spanish = {
             page_rows_per_page: "Registros por página",
             home: "Inicio",
             skip_nav: "Abrir / Cerrar menú"
+        },
+        page: {
+            empty: "No hay registros",
+            invite: "Crear nuevo"
         }
     },
     custom: {

@@ -13,12 +13,12 @@ export const PatientClinicalStories = ({ record }: PatientClinicalStoriesProps) 
     return (
         <Card>
             <Stack spacing={2} sx={{ padding: 5, width: '100%' }}>
-                <Typography sx={{ paddingBottom : 2 }} variant="h5" color="secondary">Historias Clínicas</Typography>
+                <Typography sx={{ paddingBottom : 2 }} variant="h6" color="secondary">Historias Clínicas</Typography>
                 {record.clinicalStories.map((clinicalStory, index) => (
                     <Accordion key={index} title={formatDate(clinicalStory.createdAt)}>
                         <Stack spacing={1}>
-                            <Typography><strong>Observaciones:</strong> {clinicalStory.observations}</Typography>
-                            <Typography><strong>Plan de Tratamiento:</strong> {clinicalStory.treatmentPlan}</Typography>
+                            <Typography variant="subtitle1"><strong>Observaciones:</strong> {clinicalStory.observations}</Typography>
+                            <Typography variant="subtitle1"><strong>Plan de Tratamiento:</strong> {clinicalStory.treatmentPlan}</Typography>
                         </Stack>
                     </Accordion>
                 ))}

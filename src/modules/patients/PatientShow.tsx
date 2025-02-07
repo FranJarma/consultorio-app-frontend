@@ -15,7 +15,7 @@ const PatientShowView = () => {
                 <PatientInfo record={record} />
             </Grid>
             <Grid item xs={12} lg={4}>
-                <PatientTurns record={record} />
+                <PatientTurns record={record} title="Turnos Asignados" />
             </Grid>
             <Grid item xs={12}>
                 <PatientClinicalStories record={record} />

@@ -1,13 +1,12 @@
 import {
   Admin,
   Resource,
-  ListGuesser,
   EditGuesser,
   ShowGuesser,
   defaultTheme,
 } from "react-admin";
 import polyglotI18nProvider from "ra-i18n-polyglot";
-import { CalendarMonthOutlined, DescriptionOutlined, HomeOutlined, PeopleOutlined } from "@mui/icons-material";
+import { CalendarMonthOutlined, DescriptionOutlined, PeopleOutlined } from "@mui/icons-material";
 import { deepmerge } from '@mui/utils';
 import { Layout } from "./Layout";
 import { dataProvider } from "./dataProvider";
@@ -17,6 +16,9 @@ import { MyLogin } from "./modules/login/Login";
 import { PatientCreate, PatientEdit, PatientList } from "./modules/patients";
 import { PatientShow } from "./modules/patients/PatientShow";
 import { TurnList } from "./modules/turns/TurnList";
+import { ClinicalStoryList } from "./modules/clinical-stories/ClinicalStoryList";
+import { ClinicalStoryCreate } from "./modules/clinical-stories/components/ClinicalStoryCreate";
+import { ClinicalStoryEdit } from "./modules/clinical-stories/components/ClinicalStoryEdit";
 
 
 const i18nProvider = polyglotI18nProvider(() => spanish, "es");
@@ -64,8 +66,6 @@ export const App = () => (
         label: "Turnos",
       }}
       list={TurnList}
-      edit={EditGuesser}
-      show={ShowGuesser}
     />
     <Resource
       name="clinical-stories"
@@ -73,9 +73,10 @@ export const App = () => (
       options={{
         label: "Historias Clínicas",
       }}
-      list={ListGuesser}
-      edit={EditGuesser}
-      show={ShowGuesser}
+      list={ClinicalStoryList}
+      create={ClinicalStoryCreate}
+      edit={ClinicalStoryEdit}
+      show={false}
     />
   </Admin>
 );

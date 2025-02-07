@@ -5,21 +5,24 @@ import { formatDate, formatTime, getStatesIconsAndColors } from "../../../../com
 
 type PatientTurnsProps = {
     record: Patient;
+    title?: string;
+    renderCard?: boolean;
 };
 
-export const PatientTurns = ({ record }: PatientTurnsProps) => {
+
+export const PatientTurns = ({ record, title, renderCard = true }: PatientTurnsProps) => {
     const translate = useTranslate();
 
-    return (
-        <Card>
+    const TurnsInfo = () => {
+        return (
             <Stack spacing={2} sx={{ padding: 5 }}>
-                <Typography variant="h5" color="secondary">
-                    Turnos
+                <Typography variant="h6" color="secondary">
+                    {title}
                 </Typography>
-
+        
                 {record?.turns?.map((turn, index) => {
                     const stateData = getStatesIconsAndColors(turn.state);
-
+            
                     return (
                         <Stack
                             key={index}
@@ -35,11 +38,11 @@ export const PatientTurns = ({ record }: PatientTurnsProps) => {
                             <Typography variant="subtitle1" fontWeight="bold" sx={{ minWidth: 80 }}>
                                 Turno {index + 1}:
                             </Typography>
-
-                            <Typography sx={{ flexGrow: 1, minWidth: 180 }}>
+            
+                            <Typography variant="subtitle2" sx={{ flexGrow: 1, minWidth: 180 }}>
                                 {formatDate(turn.date)} - {formatTime(turn.date)}
                             </Typography>
-
+            
                             {stateData && (
                                 <Stack 
                                     direction="row" 
@@ -50,14 +53,22 @@ export const PatientTurns = ({ record }: PatientTurnsProps) => {
                                     }}
                                 >
                                     <stateData.icon sx={{ fontSize: 20 }} />
-                                    <Typography>{translate(stateData.key)}</Typography>
+                                    <Typography variant="subtitle2">{translate(stateData.key)}</Typography>
                                 </Stack>
                             )}
                         </Stack>
-
+            
                     );
                 }) ?? "-"}
             </Stack>
+        )
+    };
+
+    return (
+        renderCard ?
+        <Card>
+            <TurnsInfo/>
         </Card>
+        : <TurnsInfo/>
     );
 };

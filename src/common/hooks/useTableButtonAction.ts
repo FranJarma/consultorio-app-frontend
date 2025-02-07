@@ -5,22 +5,28 @@ type ActionType = "CREATE" | "UPDATE";
 export const useTableButtonAction = (resource: string, action: ActionType) => {
   const record = useRecordContext();
 
-  const [create, { isPending: isCreating, isSuccess: isSuccessCreate, error: createError }] = useCreate();
-  const [update, { isPending: isUpdating, isSuccess: isSuccessUpdate, error: updateError }] = useUpdate();
+  const [create, {isPending: isPendingCreate}] = useCreate();
+  const [update, {isPending: isPendingUpdate}] = useUpdate();
 
-  const executeAction = (data: any) => {
-    if (action === "CREATE") {
-      return create(resource, { data });
-    }
-    if (action === "UPDATE") {
-      return record ? update(resource, { id: record.id, data }) : Promise.reject(new Error("Record is undefined"));
+  const executeAction = async (data: any) => {
+    try {
+      let response;
+      if (action === "CREATE") {
+        response = await create(resource, { data }, { returnPromise: true });
+      } else if (action === "UPDATE") {
+        if (!record) throw new Error("Record is undefined");
+        response = await update(resource, { id: record.id, data }, { returnPromise: true });
+      }
+
+      return response;
+    } catch (error: any) {
+      throw new Error(error?.body?.message || error?.message || "Error desconocido");
     }
   };
 
   return {
-    isPending: isCreating || isUpdating,
-    isSuccess: isSuccessCreate || isSuccessUpdate,
-    error: createError || updateError,
     executeAction,
+    isPending: isPendingCreate || isPendingUpdate
   };
 };
+
