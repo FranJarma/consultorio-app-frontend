@@ -12,13 +12,10 @@ import {
     TextField,
     CreateButton,
     EditButton,
-    UrlField,
-    ShowButton,
 } from "react-admin";
 import MyBreadcrumbs from "../../common/components/ui/Breadcrumb";
 import TableButtons from "../../common/components/ui/TableButtons";
 import CustomDateField from "../../common/components/ui/CustomDateField";
-import { CustomFileField } from "../../common/components/ui/CustomFileField";
 import { ClinicalStory } from "./types/clinical-stories";
 
 const ListActions = () => (
@@ -34,8 +31,6 @@ const filters = [
 ];
 
 export const ClinicalStoryList = () => {
-    const translate = useTranslate();
-
     return (
         <>
             <MyBreadcrumbs style={{ paddingTop: 48 }} />

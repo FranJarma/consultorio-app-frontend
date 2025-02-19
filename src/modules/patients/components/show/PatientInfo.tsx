@@ -14,8 +14,8 @@ export const PatientInfo = ({ record }: PatientInfoProps) => {
                     { label: "Nombre Paciente", value: record.fullname },
                     { label: "Edad", value: record.age },
                     { label: "DNI", value: record.dni },
-                    { label: "Obra Social", value: record.healthEnsurance },
-                    { label: "Localidad", value: record.locality },
+                    { label: "Obra Social", value: record.healthEnsurance.name },
+                    { label: "Localidad", value: record.locality.name },
                     { label: "Profesión", value: record.profession },
                     { label: "Dirección", value: record.address }
                 ].map(({ label, value }) => (

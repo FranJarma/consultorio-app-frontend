@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid2';
-import { Create, required, SimpleForm, TextInput, AutocompleteInput, NumberInput } from "react-admin";
+import { Create, required, SimpleForm, TextInput, AutocompleteInput, NumberInput, ReferenceInput } from "react-admin";
 import MyBreadcrumbs from '../../common/components/ui/Breadcrumb';
 import { HEALTH_ENSURANCES } from '../../common/constants/healthEnsurances';
 import { LOCALITIES } from '../../common/constants/localities';
@@ -32,10 +32,14 @@ export const PatientCreate = () => (
                     <NumberInput source="age" label="Edad" validate={[required()]} />
                 </Grid>
                 <Grid size={{ xs: 12, md: 5}}>
-                    <AutocompleteInput source="healthEnsurance" label="Obra Social" choices={HEALTH_ENSURANCES} validate={[required()]} />   
+                    <ReferenceInput source="healthEnsuranceId" reference="health-ensurances">
+                        <AutocompleteInput label="Obra Social" validate={[required()]}/>
+                    </ReferenceInput>
                 </Grid>
                 <Grid size={{ xs: 12, md: 5}}>
-                    <AutocompleteInput source="locality" label="Localidad" choices={LOCALITIES} validate={[required()]} />   
+                    <ReferenceInput source="localityId" reference="localities">
+                        <AutocompleteInput label="Localidad" validate={[required()]}/>
+                    </ReferenceInput> 
                 </Grid>
             </Grid>
         </SimpleForm>

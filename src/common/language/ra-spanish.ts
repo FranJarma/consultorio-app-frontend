@@ -3,17 +3,25 @@ import spanishMessages from "ra-language-spanish";
 export const spanish = {
     ...spanishMessages,
     resources: {
-        'clinical-stories': {
-            name: 'Historias Clínicas',
-            singularName: 'Historia Clínica'
+        "clinical-stories": {
+            name: "Historias Clínicas",
+            singularName: "Historia Clínica"
         },
         patients: {
-            name: 'Pacientes',
-            singularName: 'Paciente',
+            name: "Pacientes",
+            singularName: "Paciente",
         },
         turns: {
-            name: 'Turnos',
-            singularName: 'Turno',
+            name: "Turnos",
+            singularName: "Turno",
+        },
+        "health-ensurances": {
+            name:  "Obras Sociales",
+            singularName: "Obra Social"
+        },
+        localities: {
+            name:  "Localidades",
+            singularName: "Localidad"
         }
     },
     ra: {

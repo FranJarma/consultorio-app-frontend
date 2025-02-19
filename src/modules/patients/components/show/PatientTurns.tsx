@@ -2,6 +2,8 @@ import { Card, Stack, Typography } from "@mui/material";
 import { Patient } from "../../types/patients";
 import { useTranslate } from "react-admin";
 import { formatDate, formatTime, getStatesIconsAndColors } from "../../../../common/utils";
+import { InfoOutlined } from "@mui/icons-material";
+import { NoDataFound } from "../../../../common/components/NoDataFound";
 
 type PatientTurnsProps = {
     record: Patient;
@@ -14,13 +16,24 @@ export const PatientTurns = ({ record, title, renderCard = true }: PatientTurnsP
     const translate = useTranslate();
 
     const TurnsInfo = () => {
+        if (!record?.turns || record.turns.length === 0) {
+            return (
+                <Stack spacing={2} sx={{ padding: 5 }}>
+                    <Typography variant="h6" color="secondary">
+                        {title}
+                    </Typography>
+                    <NoDataFound entity="Turnos"/>
+                </Stack>
+            );
+        }
+
         return (
             <Stack spacing={2} sx={{ padding: 5 }}>
                 <Typography variant="h6" color="secondary">
                     {title}
                 </Typography>
         
-                {record?.turns?.map((turn, index) => {
+                {record.turns.map((turn, index) => {
                     const stateData = getStatesIconsAndColors(turn.state);
             
                     return (
@@ -57,11 +70,10 @@ export const PatientTurns = ({ record, title, renderCard = true }: PatientTurnsP
                                 </Stack>
                             )}
                         </Stack>
-            
                     );
-                }) ?? "-"}
+                })}
             </Stack>
-        )
+        );
     };
 
     return (

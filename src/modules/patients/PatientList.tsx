@@ -47,10 +47,10 @@ export const PatientList = () => {
               <Datagrid rowClick={false}>
                   <TextField source="fullname" label="Nombre del Paciente" />
                   <TextField source="dni" label="DNI" />
-                  <TextField source="healthEnsurance" label="Obra Social" />
-                  <TextField source="locality" label="Localidad" />
-                  <TextField source="profession" label="Profesión" />
+                  <TextField source="healthEnsurance.name" label="Obra Social" />
                   <TextField source="address" label="Dirección" />
+                  <TextField source="locality.name" label="Localidad" />
+                  <TextField source="profession" label="Profesión" />
                   <NumberField source="age" label="Edad" />
                   <WrapperField label="Acciones">
                       <TableButtons>

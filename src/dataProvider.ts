@@ -11,7 +11,6 @@ export const dataProvider = {
   create: (resource: string, params: CreateParams<any>) => {
     if (resource === 'clinical-stories') {
       const formData = new FormData();
-      console.log({ params });
       formData.append('odontogram', params.data.odontogram.rawFile);
       formData.append('patientId', params.data.patientId);
       formData.append('observations', params.data.observations);
