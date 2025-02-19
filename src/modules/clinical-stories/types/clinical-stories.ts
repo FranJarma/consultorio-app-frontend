@@ -2,7 +2,8 @@ export type ClinicalStory = {
     createdAt: Date;
     date: Date;
     id: string;
-    observations: string;
     patientId: string;
-    treatmentPlan: string;
+    observations?: string;
+    odontogramUrl: string;
+    treatmentPlan?: string;
 }

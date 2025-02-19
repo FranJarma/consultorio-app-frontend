@@ -1,8 +1,6 @@
 import {
   Admin,
   Resource,
-  EditGuesser,
-  ShowGuesser,
   defaultTheme,
 } from "react-admin";
 import polyglotI18nProvider from "ra-i18n-polyglot";
