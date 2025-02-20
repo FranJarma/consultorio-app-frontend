@@ -17,15 +17,11 @@ const ListActions = () => (
     </TopToolbar>
 );
 
-const filters = [
-    <SearchInput source="q" alwaysOn />,
-];
-
 export const LocalityList = () => {
     return (
         <>
             <MyBreadcrumbs style={{ paddingTop: 48 }} />
-            <List actions={<ListActions />} filters={filters} storeKey={false}>
+            <List actions={<ListActions />} storeKey={false}>
                 <Datagrid rowClick={false} bulkActionButtons={false}>
                     <TextField label="Nombre" source="name"/>
                     <WrapperField label="Acciones">

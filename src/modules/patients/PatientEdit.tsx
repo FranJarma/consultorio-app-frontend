@@ -1,6 +1,5 @@
 import Grid from '@mui/material/Grid2';
-import { Edit, required, SimpleForm, TextInput, AutocompleteInput, NumberInput, EditProps, useRecordContext } from "react-admin";
-import { HEALTH_ENSURANCES } from '../../common/constants/healthEnsurances';
+import { Edit, required, SimpleForm, TextInput, AutocompleteInput, NumberInput, EditProps, useRecordContext, ReferenceInput } from "react-admin";
 import { Patient } from './types/patients';
 import MyBreadcrumbs from '../../common/components/ui/Breadcrumb';
 
@@ -34,11 +33,18 @@ export const PatientEdit = (props: EditProps) => {
                     <Grid size={6}>
                         <TextInput source="email" label="Email" validate={[required()]} />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ xs: 12, md: 2}}>
                         <NumberInput source="age" label="Edad" validate={[required()]} />
                     </Grid>
-                    <Grid size={6}>
-                        <AutocompleteInput defaultValue={props.record?.healthEnsurance.name} source="healthEnsurance" label="Obra Social" choices={HEALTH_ENSURANCES} validate={[required()]} />   
+                    <Grid size={{ xs: 12, md: 5}}>
+                    <ReferenceInput source="healthEnsuranceId" reference="health-ensurances">
+                        <AutocompleteInput label="Obra Social" validate={[required()]}/>
+                    </ReferenceInput>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 5}}>
+                        <ReferenceInput source="localityId" reference="localities">
+                            <AutocompleteInput label="Localidad" validate={[required()]}/>
+                        </ReferenceInput> 
                     </Grid>
                 </Grid>
             </SimpleForm>

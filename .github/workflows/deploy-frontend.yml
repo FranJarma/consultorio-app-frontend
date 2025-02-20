@@ -20,14 +20,14 @@ jobs:
 
       - name: 📂 Copy files to server
         run: |
-          rsync -avz --exclude 'node_modules' --exclude '.git' -e "ssh -o StrictHostKeyChecking=no" ./ root@144.126.154.26:/root/consultorio-app-frontend
+          rsync -avz --exclude 'node_modules' --exclude '.git' --exclude '.env' -e "ssh -o StrictHostKeyChecking=no" ./ root@${{ secrets.SERVER_IP }}:/root/consultorio-app-frontend
 
       - name: 🚀 Build frontend
         run: |
-          ssh root@144.126.154.26 << 'EOF'
+          ssh root@${{ secrets.SERVER_IP }} << 'EOF'
           cd /root/consultorio-app-frontend
           pnpm install --frozen-lockfile
-          npm run build
+          pnpm run build
           sudo rm -rf /var/www/html/*
           sudo cp -r dist/* /var/www/html/
           exit
@@ -35,7 +35,7 @@ jobs:
 
       - name: 🌐 Reset Nginx
         run: |
-          ssh root@144.126.154.26 << 'EOF'
+          ssh root@${{ secrets.SERVER_IP }} << 'EOF'
           sudo systemctl reload nginx
           exit
           EOF

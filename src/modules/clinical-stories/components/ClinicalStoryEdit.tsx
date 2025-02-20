@@ -1,19 +1,18 @@
 import Grid from '@mui/material/Grid';
-import { Edit, ImageField, ImageInput, required, SimpleForm, TextInput, useRecordContext } from "react-admin";
+import { AutocompleteInput, Edit, ImageField, ImageInput, ReferenceInput, required, SimpleForm, TextInput, useRecordContext } from "react-admin";
 import MyBreadcrumbs from '../../../common/components/ui/Breadcrumb';
-import { Patient } from '../../patients/types/patients';
-
-const ClinicalStoryTitle = () => {
-    const record = useRecordContext<Patient>();
-    return <h3>Datos de la Historia Clínica: {record ? record.fullname : ''}</h3>;
-};
 
 export const ClinicalStoryEdit = () => (
     <Edit>
         <SimpleForm>
             <MyBreadcrumbs/>
-            <ClinicalStoryTitle />
+            <h3>Datos de la Historia Clínica</h3>
             <Grid container spacing={1}>
+                <Grid item xs={12}>
+                    <ReferenceInput source="patientId" reference="patients">
+                        <AutocompleteInput disabled label="Paciente" optionText="fullname" validate={[required()]} />
+                    </ReferenceInput>
+                </Grid>
                 <Grid item xs={12}>
                     <TextInput multiline minRows={10} source="observations" label="Observaciones" validate={[required()]} />
                 </Grid>
