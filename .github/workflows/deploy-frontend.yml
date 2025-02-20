@@ -1,0 +1,41 @@
+name: Deploy Frontend to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚀 Clone repository
+        uses: actions/checkout@v4
+
+      - name: 🔑 Configure SSH Connection
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: 📂 Copy files to server
+        run: |
+          rsync -avz --exclude 'node_modules' --exclude '.git' -e "ssh -o StrictHostKeyChecking=no" ./ root@144.126.154.26:/root/consultorio-app-frontend
+
+      - name: 🚀 Build frontend
+        run: |
+          ssh root@144.126.154.26 << 'EOF'
+          cd /root/consultorio-app-frontend
+          pnpm install --frozen-lockfile
+          npm run build
+          sudo rm -rf /var/www/html/*
+          sudo cp -r dist/* /var/www/html/
+          exit
+          EOF
+
+      - name: 🌐 Reset Nginx
+        run: |
+          ssh root@144.126.154.26 << 'EOF'
+          sudo systemctl reload nginx
+          exit
+          EOF

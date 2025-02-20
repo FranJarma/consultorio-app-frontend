@@ -21,7 +21,7 @@ const PatientDetails = () => {
                         <Typography variant="body2"><strong>Domicilio:</strong> {patient?.address || 'No disponible'}</Typography>
                     </Grid>
                     <Grid item xs={12} xl={4}>
-                        <Typography variant="body2"><strong>Localidad:</strong> {patient?.locality || 'No disponible'}</Typography>
+                        <Typography variant="body2"><strong>Localidad:</strong> {patient?.locality?.name || 'No disponible'}</Typography>
                     </Grid>
                     <Grid item xs={12} xl={4}>
                         <Typography variant="body2"><strong>Teléfono:</strong> {patient?.phone || 'No disponible'}</Typography>
@@ -30,7 +30,7 @@ const PatientDetails = () => {
                         <Typography variant="body2"><strong>Profesión:</strong> {patient?.profession || 'No disponible'}</Typography>
                     </Grid>
                     <Grid item xs={12} xl={4}>
-                        <Typography variant="body2"><strong>Obra Social:</strong> {patient?.healthEnsurance || 'No disponible'}</Typography>
+                        <Typography variant="body2"><strong>Obra Social:</strong> {patient?.healthEnsurance?.name || 'No disponible'}</Typography>
                     </Grid>
                     <Grid item xs={12} xl={4}>
                         <Typography variant="body2"><strong>Edad:</strong> {patient?.age || 'No disponible'}</Typography>

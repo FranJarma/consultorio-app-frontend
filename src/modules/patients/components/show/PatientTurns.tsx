@@ -18,7 +18,7 @@ export const PatientTurns = ({ record, title, renderCard = true }: PatientTurnsP
     const TurnsInfo = () => {
         if (!record?.turns || record.turns.length === 0) {
             return (
-                <Stack spacing={2} sx={{ padding: 5 }}>
+                <Stack spacing={2} sx={{ padding: 5, width: "100%" }}>
                     <Typography variant="h6" color="secondary">
                         {title}
                     </Typography>
