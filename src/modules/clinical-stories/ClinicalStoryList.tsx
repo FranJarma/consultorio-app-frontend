@@ -5,7 +5,6 @@ import {
     ExportButton,
     TextInput,
     FunctionField,
-    useTranslate,
     Link,
     WrapperField,
     Datagrid,
@@ -16,6 +15,7 @@ import {
 import MyBreadcrumbs from "../../common/components/ui/Breadcrumb";
 import TableButtons from "../../common/components/ui/TableButtons";
 import CustomDateField from "../../common/components/ui/CustomDateField";
+import { OdontogramLink } from "../../common/components/OdontogramLink";
 import { ClinicalStory } from "./types/clinical-stories";
 
 const ListActions = () => (
@@ -54,11 +54,7 @@ export const ClinicalStoryList = () => {
                         label="Odontograma"
                         render={(record: ClinicalStory) =>
                             record.odontogramUrl ? (
-                                <a href={`${import.meta.env.VITE_SIMPLE_REST_URL}${record.odontogramUrl}`} 
-                                target="_blank" 
-                                rel="noopener noreferrer">
-                                    Ver Odontograma
-                                </a>
+                                <OdontogramLink odontogramUrl={record.odontogramUrl}/>
                             ) : (
                                 "-"
                             )

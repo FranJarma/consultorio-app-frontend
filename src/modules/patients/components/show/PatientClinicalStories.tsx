@@ -4,6 +4,7 @@ import Accordion from "../../../../common/components/ui/Accordion";
 import { formatDate } from "../../../../common/utils/date";
 import { InfoOutlined } from "@mui/icons-material";
 import { NoDataFound } from "../../../../common/components/NoDataFound";
+import { OdontogramLink } from "../../../../common/components/OdontogramLink";
 
 type PatientClinicalStoriesProps = {
     record: Patient;
@@ -25,7 +26,7 @@ export const PatientClinicalStories = ({ record }: PatientClinicalStoriesProps) 
                                 {clinicalStory.odontogramUrl && (
                                     <>
                                         <Typography variant="subtitle1">
-                                            <a href={clinicalStory.odontogramUrl} target="_blank">Ver Odontograma</a>
+                                            <OdontogramLink odontogramUrl={clinicalStory.odontogramUrl}/>
                                         </Typography>
                                     </>
                                 )}
